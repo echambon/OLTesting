@@ -1,0 +1,79 @@
+﻿.popup {
+    display: none;
+    position: absolute;
+    background-color: rgba(0,0,0,0.3);
+    padding: 15px 15px 5px 5px;
+    border-radius: 5px;
+    top: 120px;
+    left: 70px;
+    min-width: 380px;
+    color: white;
+    font: 24px "Open Sans", sans-serif;
+    font-weight: bold;
+}
+
+.popup-closer {
+    text-decoration: none;
+    color: white;
+    position: absolute;
+    top: 2px;
+    right: 8px;
+}
+
+.popup-closer::after {
+    content: "✖";
+}
+
+.popup-content {
+    padding-bottom: 10px;
+}
+
+.popup-mouse-coordinates::before {
+    content: "";
+    display: block;
+    float: left;
+    background: url('http://rendering/img/iconMouse.png') no-repeat;
+    height: 30px;
+    width: 30px;
+    padding-right: 10px;
+}
+
+.popup-user-coordinates::before {
+    content: "";
+    display: block;
+    float: left;
+    background: url('http://rendering/img/iconSatellite.png') no-repeat;
+    height: 30px;
+    width: 30px;
+    padding-right: 10px;
+}
+
+.popup-user-speed::before {
+    content: "";
+    display: block;
+    float: left;
+    background: url('http://rendering/img/iconSpeed.png') no-repeat;
+    height: 30px;
+    width: 30px;
+    padding-right: 10px;
+}
+
+.popup-user-heading::before {
+    content: "";
+    display: block;
+    float: left;
+    background: url('http://rendering/img/iconHeading.png') no-repeat;
+    height: 30px;
+    width: 30px;
+    padding-right: 10px;
+}
+
+.blinking-content {
+    animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}

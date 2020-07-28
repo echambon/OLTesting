@@ -1,0 +1,117 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    /*overflow: hidden; --> makes tooltip bug*/
+}
+
+.map {
+    height: 100vh;
+    width: 100%;
+}
+
+#map .ol-zoomslider {
+    top: 8px;
+    left: auto;
+    right: 8px;
+    background-color: rgba(255,69,0,0.2);
+    width: 200px;
+    height: 15px;
+    padding: 0;
+    box-shadow: 0 0 5px rgb(255,69,0);
+    border-radius: 20px;
+}
+
+#map .ol-zoomslider:hover {
+    background-color: rgba(255,69,0,0.3);
+}
+
+#map .ol-zoomslider-thumb {
+    height: 15px;
+    width: 15px;
+    margin: 0;
+    filter: none;
+    background-color: rgba(255,69,0,0.6);
+    border-radius: 20px;
+}
+
+#map a.ol-zoomslider-handle:hover {
+    background-color: rgba(255,69,0,0.7);
+}
+
+.ol-rotate {
+    top: 3em;
+}
+
+div.ol-custom-overviewmap div.ol-overviewmap-map {
+    border: none;
+    width: 300px;
+    height: 300px;
+}
+
+div.ol-custom-overviewmap div.ol-overviewmap-box {
+    border: 2px solid red;
+}
+
+.custom-control {
+    position: absolute;
+    background-color: white;
+    padding: 5px 2px 0px 2px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+}
+
+.custom-control-active {
+    background-color: #C0C0C0;
+}
+
+.custom-control:hover {
+    filter: alpha(opacity = 50);
+    background-color: rgba(0,60,136,0.5);
+    border-radius: 5px;
+}
+
+.custom-control button {
+    background-color: transparent;
+    border: 0px;
+}
+
+.custom-control button:focus {
+    background-color: transparent;
+    border: 0px;
+    outline: 0;
+}
+
+.display-usercoords-control {
+    left: 120px;
+    top: .5em;
+}
+
+.center-on-user-position-control {
+    left: 160px;
+    top: .5em;
+}
+
+.lock-on-user-position-heading-control {
+    left: 200px;
+    top: .5em;
+}
+
+.display-coordinates-control {
+    left: 240px;
+    top: .5em;
+}
+
+.start-pause-record-control {
+    left: 280px;
+    top: .5em;
+}
+
+.toggle-graticule-control {
+    left: 320px;
+    top: .5em;
+}
+
+.display-fullscreen-control {
+    left: 360px;
+    top: .5em;
+}
