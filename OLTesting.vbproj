@@ -164,6 +164,7 @@
     </None>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <EmbeddedResource Include="Resources\js\LObject.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\js\leonar.js" />

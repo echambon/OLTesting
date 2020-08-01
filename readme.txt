@@ -23,6 +23,9 @@ and update displayed coordinates on mouse move
 
 XX/XX/XXXX : route logging GPX/GeoJSON export/import (export from VB code not from JS features ?)
 XX/XX/XXXX : multiple routes management (form+html list)
+--> create a LObject class incorporating features (which will be rendered in loop if LObject is shown)
+--> https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Classes
+XX/XX/XXXX : LObject export to XML (https://developer.mozilla.org/en-US/docs/Web/Guide/Parsing_and_serializing_XML)
 
 
 XX/XX/XXXX : user layer features selection (just respond to mouse hover?) and information display in specific popup (feature type, coordinates at the least if point) (https://openlayers.org/en/latest/examples/select-features.html ?)
@@ -31,6 +34,9 @@ XX/XX/XXXX : GPX/GeoJSON waypoint/track/route export/import
 
 XX/XX/XXXX : NM and heading rule tool with both ends movable by user and can be snapped to/from any other feature (Problems probably to be encountered: how to disable map motion when moving feature and allow it when not selectiong feature?)
 XX/XX/XXXX : NM and heading rule route tool (multiple segments possible to anticipate route)
+
+
+XX/XX/XXXX : loading splash screen while waiting for cefsharp to be active?
 
 
 Bugs :

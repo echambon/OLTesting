@@ -17,6 +17,7 @@ Public Class LeONARStaticMethods
         result.RegisterResourceHandler("http://rendering/js/events.js", GetStreamResource("OLTesting.events.js"), "text/javascript")
         result.RegisterResourceHandler("http://rendering/js/controls.js", GetStreamResource("OLTesting.controls.js"), "text/javascript")
         result.RegisterResourceHandler("http://rendering/js/leonar.js", GetStreamResource("OLTesting.leonar.js"), "text/javascript")
+        result.RegisterResourceHandler("http://rendering/js/LObject.js", GetStreamResource("OLTesting.LObject.js"), "text/javascript")
 
         result.RegisterResourceHandler("http://rendering/img/iconShip.png", GetStreamResource("OLTesting.iconShip.png"), "image/png")
         result.RegisterResourceHandler("http://rendering/img/iconGlobe.png", GetStreamResource("OLTesting.iconGlobe.png"), "image/png")
