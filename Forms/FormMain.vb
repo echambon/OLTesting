@@ -121,6 +121,11 @@ Public Class FormMain
         ' initialize Cef component
         Settings = New CefSettings
         Settings.CachePath = Application.UserAppDataPath
+        Dim customScheme = New CefCustomScheme()
+        customScheme.IsStandard = True
+        customScheme.SchemeName = "localfolder"
+        customScheme.SchemeHandlerFactory = New SchemeHandler.FolderSchemeHandlerFactory("D:")
+        Settings.RegisterScheme(customScheme)
         CefSharp.Cef.Initialize(Settings)
 
         Dim html As String = LeONARStaticMethods.GetStringResource("OLTesting.map.html")

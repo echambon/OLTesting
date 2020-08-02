@@ -109,14 +109,26 @@ var routeLoggingVectorLayer = new ol.layer.Vector({
 });
 
 // DEBUG
-var lobjectTest1 = new LObject("test1", true, routeLoggingSource);
-var lobjectTest2 = new LObject("test2", false, routeLoggingSource);
+var debugGPXSource = new ol.source.Vector({
+    url: 'localfolder/source/repos/OLTesting/_tests/balade.gpx', // Not working (no longer local file problem but not loading)
+    format: new ol.format.GPX(),
+});
+var debugGPXLayer = new ol.layer.Vector({
+    source: debugGPXSource,
+    style: function (feature) {
+        return routeStyles[feature.getGeometry().getType()];
+    },
+});
+var lobjectTest1 = new LObject("test1", true, routeLoggingVectorLayer);
+var lobjectTest2 = new LObject("test2", false, debugGPXLayer);
 var leonarWorkspace = [
     lobjectTest1,
     lobjectTest2
 ];
-console.log(JSON.stringify(leonarWorkspace));
-
+//console.log(JSON.stringify(leonarWorkspace)); // working
+var test = debugGPXSource.getFeatures();
+console.log(test.length);
+console.log(debugGPXSource.getUrl());
 
 //// Popups/forms
 var coordinates_container = document.getElementById('mouse-coordinates');
@@ -227,7 +239,8 @@ function init() {
             oseamaplayer,
             graticule,
             userPositionVectorLayer,
-            routeLoggingVectorLayer
+            routeLoggingVectorLayer,
+            debugGPXLayer
         ],
         controls: ol.control.defaults({ attribution: false }).extend([
             new ol.control.ZoomSlider(),

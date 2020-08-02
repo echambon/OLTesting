@@ -24,6 +24,7 @@ and update displayed coordinates on mouse move
 LObject : how to save speed data ??
 XX/XX/XXXX : implement saving leonarWorkspace (array of LObjects) to JSON
 XX/XX/XXXX : implement loading GPX file to LObject (and load speed data)
+XX/XX/XXXX : implement loading LObjects array JSON to leonarWorkspace
 XX/XX/XXXX : route logging GPX/GeoJSON export/import (export from VB code not from JS features ?)
 XX/XX/XXXX : multiple routes management (form+html list)
 --> create a LObject class incorporating features (which will be rendered in loop if LObject is shown)
