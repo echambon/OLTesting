@@ -21,11 +21,14 @@ and update displayed coordinates on mouse move
 [X] XX/XX/XXXX : implement route logging (+ route/features? listing form and GPX and/or GeoJSON export option)
 
 
+XX/XX/XXXX : implement saving leonarWorkspace (array of LObjects) to JSON
 XX/XX/XXXX : route logging GPX/GeoJSON export/import (export from VB code not from JS features ?)
 XX/XX/XXXX : multiple routes management (form+html list)
 --> create a LObject class incorporating features (which will be rendered in loop if LObject is shown)
 --> https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Classes
-XX/XX/XXXX : LObject export to XML (https://developer.mozilla.org/en-US/docs/Web/Guide/Parsing_and_serializing_XML)
+XX/XX/XXXX : LObject export to XML or JSON (https://developer.mozilla.org/en-US/docs/Web/Guide/Parsing_and_serializing_XML)
+https://stackoverflow.com/questions/40201589/serializing-an-es6-class-object-as-json
+https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON
 
 
 XX/XX/XXXX : user layer features selection (just respond to mouse hover?) and information display in specific popup (feature type, coordinates at the least if point) (https://openlayers.org/en/latest/examples/select-features.html ?)

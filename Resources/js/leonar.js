@@ -108,7 +108,12 @@ var routeLoggingVectorLayer = new ol.layer.Vector({
     },
 });
 
-var lobjectTest = new LObject("test", true, routeLoggingSource);
+var lobjectTest1 = new LObject("test1", true, routeLoggingSource);
+var lobjectTest2 = new LObject("test2", false, routeLoggingSource);
+var leonarWorkspace = [
+    lobjectTest1,
+    lobjectTest2
+];
 
 
 //// Popups/forms
