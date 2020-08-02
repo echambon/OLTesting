@@ -65,8 +65,7 @@ div.ol-custom-overviewmap div.ol-overviewmap-box {
 }
 
 .custom-control:hover {
-    filter: alpha(opacity = 50);
-    background-color: rgba(0,60,136,0.5);
+    background-color: rgb(111, 160, 220);
     border-radius: 5px;
 }
 

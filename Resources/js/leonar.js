@@ -108,6 +108,8 @@ var routeLoggingVectorLayer = new ol.layer.Vector({
     },
 });
 
+var lobjectTest = new LObject("test", true, routeLoggingSource);
+
 
 //// Popups/forms
 var coordinates_container = document.getElementById('mouse-coordinates');
