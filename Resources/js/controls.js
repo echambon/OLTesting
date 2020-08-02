@@ -158,7 +158,7 @@ app.ToggleGraticuleVisibility = function (opt_options) {
 
     var element = document.createElement('div');
     element.id = 'toggleGraticuleVisibility';
-    element.className = 'toggle-graticule-control custom-control custom-control-active button';
+    element.className = 'toggle-graticule-control custom-control button';
     element.appendChild(button);
 
     ol.control.Control.call(this, {

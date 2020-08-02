@@ -259,6 +259,9 @@ function init() {
         view: mapview,
     });
 
+    // do not activate graticule by default
+    graticule.setVisible(false);
+
     // update user feature (before update map rotation)
     updateUserPositionFeature(userPositionFeature);
     updateUserPositionFeature(userPositionFeatureOM);
