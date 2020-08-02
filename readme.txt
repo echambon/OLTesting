@@ -63,7 +63,7 @@ Controls to add: Quit application (especially when fullscreen), Lock on user hea
 >>> Save format could be GeoJSON <<<
 
 ==== Versions ====
-Openlayers V6.3.1
+Openlayers V6.4.2
 
 ==== Resources ====
 https://commons.wikimedia.org/wiki/Farm-Fresh_web_icons
