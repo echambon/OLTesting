@@ -1,6 +1,8 @@
 ﻿Imports System.Text
 Imports System.Threading
+Imports System.IO
 Imports CefSharp
+Imports CefSharp.SchemeHandler
 Imports CefSharp.WinForms
 
 Public Class FormMain
@@ -121,11 +123,23 @@ Public Class FormMain
         ' initialize Cef component
         Settings = New CefSettings
         Settings.CachePath = Application.UserAppDataPath
-        Dim customScheme = New CefCustomScheme()
-        customScheme.IsStandard = True
-        customScheme.SchemeName = "localfolder"
-        customScheme.SchemeHandlerFactory = New SchemeHandler.FolderSchemeHandlerFactory("D:")
-        Settings.RegisterScheme(customScheme)
+
+        ' define custom schemes to allow loading local files from accessible drives
+        Dim alldrives() As DriveInfo = DriveInfo.GetDrives()
+        For Each d In alldrives
+            Dim customScheme = New CefCustomScheme()
+            customScheme.IsStandard = True
+            customScheme.SchemeName = "local"
+            customScheme.DomainName = d.Name(0)
+            Try
+                customScheme.SchemeHandlerFactory = New FolderSchemeHandlerFactory(d.Name)
+                Settings.RegisterScheme(customScheme)
+            Catch ex As DirectoryNotFoundException
+                'do nothing, drive is not accessible
+            End Try
+        Next
+
+        ' initialize Cef with Settings
         CefSharp.Cef.Initialize(Settings)
 
         Dim html As String = LeONARStaticMethods.GetStringResource("OLTesting.map.html")

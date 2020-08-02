@@ -95,7 +95,7 @@ var routeStyles = {
     }),
     'MultiLineString': new ol.style.Style({
         stroke: new ol.style.Stroke({
-            color: '#0f0',
+            color: 'green', // #0f0
             width: 3
         })
     })
@@ -110,7 +110,7 @@ var routeLoggingVectorLayer = new ol.layer.Vector({
 
 // DEBUG
 var debugGPXSource = new ol.source.Vector({
-    url: 'localfolder/source/repos/OLTesting/_tests/balade.gpx', // Not working (no longer local file problem but not loading)
+    url: 'local://D/source/repos/OLTesting/_tests/balade.gpx',
     format: new ol.format.GPX(),
 });
 var debugGPXLayer = new ol.layer.Vector({
@@ -126,9 +126,6 @@ var leonarWorkspace = [
     lobjectTest2
 ];
 //console.log(JSON.stringify(leonarWorkspace)); // working
-var test = debugGPXSource.getFeatures();
-console.log(test.length);
-console.log(debugGPXSource.getUrl());
 
 //// Popups/forms
 var coordinates_container = document.getElementById('mouse-coordinates');
