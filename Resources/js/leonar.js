@@ -23,6 +23,7 @@ var map;
 var mpControl;
 var graticule;
 var mouseWheelZoomInteraction;
+var point = null;
 
 var zoomed = false;
 var movestarted = false;
@@ -330,33 +331,21 @@ function init() {
         if (evt.dragging) {
             return;
         }
+
         var coordinate = map.getEventCoordinate(evt.originalEvent);
-        //console.log(coordinate);
-        //displaySnap(coordinate);
-
         // DEBUG
-        var point = interactWithVectorSource(debugGPXSource, coordinate); // TODO : loop over all sources in workspace
-
-        //debugGPXLayer.getSource().addFeature(point); // not working
-        //var vectorContext = ol.render.getVectorContext(evt);
-        //vectorContext.setStyle(routeStyles['Point']);
-        //if (point !== null) {
-        //    vectorContext.drawGeometry(point);
-        //}
-        //map.render();
+        point = interactWithVectorSource(debugGPXSource, coordinate); // TODO : loop over all sources in workspace
         // END DEBUG
     });
 
-    //userPositionVectorLayer.on('postrender', function (evt) {
-    //    var vectorContext = ol.render.getVectorContext(evt);
-    //    //vectorContext.setStyle(style);
-    //    if (point !== null) {
-    //        vectorContext.drawGeometry(point);
-    //    }
-    //    //if (line !== null) {
-    //    //    vectorContext.drawGeometry(line);
-    //    //}
-    //});
+    // DEBUG : a little delay when moving mouse ???
+    debugGPXLayer.on('postrender', function (evt) { // TODO : add this on postrender event to any layer created ????, or add all tracks on the same source???
+        var vectorContext = ol.render.getVectorContext(evt);
+        vectorContext.setStyle(routeStyles['Point']);
+        if (point !== null) {
+            vectorContext.drawGeometry(point);
+        }
+    });
 
     map.on('click', function (evt) {
         //displaySnap(evt.coordinate);

@@ -167,6 +167,7 @@ function dragElement(elmnt) {
 // DEBUG
 //// Map feature interaction
 function interactWithVectorSource(vectorSource, coordinate) {
+    // TODO : try to interact with track at coordinate, not closest??
     // Tries not working below:
     //var feature = vectorSource.getFeaturesAtCoordinate(coordinate);
     //var coordinates1 = coordinate; ol.coordinate.add(coordinates1, [10, 10]);
