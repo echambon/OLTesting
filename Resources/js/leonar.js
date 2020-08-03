@@ -111,7 +111,11 @@ var routeLoggingVectorLayer = new ol.layer.Vector({
 // DEBUG
 var debugGPXSource = new ol.source.Vector({
     url: 'local://D/source/repos/OLTesting/_tests/balade.gpx',
-    format: new ol.format.GPX(),
+    format: new ol.format.GPX({
+        readExtensions: function (x) {
+            return x;
+        }
+    }), // working?
 });
 var debugGPXLayer = new ol.layer.Vector({
     source: debugGPXSource,
@@ -126,6 +130,7 @@ var leonarWorkspace = [
     lobjectTest2
 ];
 //console.log(JSON.stringify(leonarWorkspace)); // working
+
 
 //// Popups/forms
 var coordinates_container = document.getElementById('mouse-coordinates');
@@ -320,6 +325,42 @@ function init() {
             map.calledRotateMapToHeading = false;
         }
     });
+
+    map.on('pointermove', function (evt) {
+        if (evt.dragging) {
+            return;
+        }
+        var coordinate = map.getEventCoordinate(evt.originalEvent);
+        //console.log(coordinate);
+        //displaySnap(coordinate);
+
+        // DEBUG
+        var point = interactWithVectorSource(debugGPXSource, coordinate); // TODO : loop over all sources in workspace
+
+        //debugGPXLayer.getSource().addFeature(point); // not working
+        //var vectorContext = ol.render.getVectorContext(evt);
+        //vectorContext.setStyle(routeStyles['Point']);
+        //if (point !== null) {
+        //    vectorContext.drawGeometry(point);
+        //}
+        //map.render();
+        // END DEBUG
+    });
+
+    //userPositionVectorLayer.on('postrender', function (evt) {
+    //    var vectorContext = ol.render.getVectorContext(evt);
+    //    //vectorContext.setStyle(style);
+    //    if (point !== null) {
+    //        vectorContext.drawGeometry(point);
+    //    }
+    //    //if (line !== null) {
+    //    //    vectorContext.drawGeometry(line);
+    //    //}
+    //});
+
+    map.on('click', function (evt) {
+        //displaySnap(evt.coordinate);
+    });
 }
 
 var previousPosition;
@@ -355,6 +396,7 @@ function loop() {
         currentPosition = getUserPosition();
 
         // creating features
+        // TODO : multiline?
         if (previousPosition != undefined && currentPosition != undefined) {
             loggingNewFeature = new ol.Feature({
                 name: 'loggedRoute',

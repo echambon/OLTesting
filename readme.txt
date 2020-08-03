@@ -21,7 +21,9 @@ and update displayed coordinates on mouse move
 [X] XX/XX/XXXX : implement route logging (+ route/features? listing form and GPX and/or GeoJSON export option)
 
 
+XX/XX/XXXX : vectorlayer, show tooltip with data when mouse goes over layer features, issued from GPX or receiver (time, coordinates, deltaTime with start, distance to start, distance to arrival, speed, heading)
 LObject : how to save speed data ??
+XX/XX/XXXX : display position precision circle when GPS data is valid
 XX/XX/XXXX : implement saving leonarWorkspace (array of LObjects) to JSON
 [STARTED] XX/XX/XXXX : implement loading GPX file to LObject (and load speed data)
 XX/XX/XXXX : implement loading LObjects array JSON to leonarWorkspace

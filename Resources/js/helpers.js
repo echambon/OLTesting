@@ -163,3 +163,28 @@ function dragElement(elmnt) {
         document.onmousemove = null;
     }
 }
+
+// DEBUG
+//// Map feature interaction
+function interactWithVectorSource(vectorSource, coordinate) {
+    // Tries not working below:
+    //var feature = vectorSource.getFeaturesAtCoordinate(coordinate);
+    //var coordinates1 = coordinate; ol.coordinate.add(coordinates1, [10, 10]);
+    //var coordinates2 = coordinate; ol.coordinate.add(coordinates2, [-10, -10]);
+    //var feature = vectorSource.getFeaturesInExtent(ol.extent.boundingExtent(coordinates1,coordinates2));
+    //console.log(feature.length);
+    var feature = vectorSource.getClosestFeatureToCoordinate(coordinate);
+    var point = null;
+    if (feature === null) {
+        // todo
+    } else {
+        var geometry = feature.getGeometry();
+        var closestPoint = geometry.getClosestPoint(coordinate);
+        point = new ol.geom.Point(closestPoint);
+        //vectorSource.addFeature(point); // debug
+        //console.log(point.getCoordinates());
+    }
+    return point;
+    //map.render();
+}
+// END DEBUG
