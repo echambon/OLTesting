@@ -164,16 +164,9 @@ function dragElement(elmnt) {
     }
 }
 
-// DEBUG
 //// Map feature interaction
 function interactWithVectorSource(vectorSource, coordinate) {
-    // TODO : try to interact with track at coordinate, not closest??
-    // Tries not working below:
-    //var feature = vectorSource.getFeaturesAtCoordinate(coordinate);
-    //var coordinates1 = coordinate; ol.coordinate.add(coordinates1, [10, 10]);
-    //var coordinates2 = coordinate; ol.coordinate.add(coordinates2, [-10, -10]);
-    //var feature = vectorSource.getFeaturesInExtent(ol.extent.boundingExtent(coordinates1,coordinates2));
-    //console.log(feature.length);
+    // TODO : improve, do not use closest feature but use a finer research area
     var feature = vectorSource.getClosestFeatureToCoordinate(coordinate);
     var point = null;
     if (feature === null) {
@@ -186,6 +179,4 @@ function interactWithVectorSource(vectorSource, coordinate) {
         //console.log(point.getCoordinates());
     }
     return point;
-    //map.render();
 }
-// END DEBUG

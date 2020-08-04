@@ -21,6 +21,12 @@ and update displayed coordinates on mouse move
 [X] XX/XX/XXXX : implement route logging (+ route/features? listing form and GPX and/or GeoJSON export option)
 
 
+1) Implement layer interaction (with one layer, loaded from GPX), interact with all possible data (speed and heading, etc)
+2) Implement multiple layers management (or other way to manage different tracks)
+3) Implement multiple layers interaction (interacting with only one at a time)
+4) Implement layer creation from GPX file loading
+5) Implement layer creation from GPS receiver, find a way to store all possible data (speed and heading)
+
 XX/XX/XXXX : vectorlayer, show tooltip with data when mouse goes over layer features, issued from GPX or receiver (time, coordinates, deltaTime with start, distance to start, distance to arrival, speed, heading)
 LObject : how to save speed data ??
 XX/XX/XXXX : display position precision circle when GPS data is valid

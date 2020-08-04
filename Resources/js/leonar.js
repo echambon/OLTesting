@@ -328,17 +328,11 @@ function init() {
     });
 
     map.on('pointermove', function (evt) {
-        if (evt.dragging) {
-            return;
-        }
-
-        var coordinate = map.getEventCoordinate(evt.originalEvent);
-        // DEBUG
-        point = interactWithVectorSource(debugGPXSource, coordinate); // TODO : loop over all sources in workspace
-        // END DEBUG
+        //if (evt.dragging) {
+        //    return;
+        //}
     });
 
-    // DEBUG : a little delay when moving mouse ???
     debugGPXLayer.on('postrender', function (evt) { // TODO : add this on postrender event to any layer created ????, or add all tracks on the same source???
         var vectorContext = ol.render.getVectorContext(evt);
         vectorContext.setStyle(routeStyles['Point']);
@@ -348,7 +342,12 @@ function init() {
     });
 
     map.on('click', function (evt) {
-        //displaySnap(evt.coordinate);
+        var coordinate = map.getEventCoordinate(evt.originalEvent);
+
+        point = interactWithVectorSource(debugGPXSource, coordinate); // TODO : loop over all sources in workspace
+
+        // Force map update (otherwise it is updated on next loop() call)
+        map.render();
     });
 }
 
