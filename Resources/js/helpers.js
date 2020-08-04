@@ -170,13 +170,11 @@ function interactWithVectorSource(vectorSource, coordinate) {
     var feature = vectorSource.getClosestFeatureToCoordinate(coordinate);
     var point = null;
     if (feature === null) {
-        // todo
+        // do nothing
     } else {
         var geometry = feature.getGeometry();
         var closestPoint = geometry.getClosestPoint(coordinate);
         point = new ol.geom.Point(closestPoint);
-        //vectorSource.addFeature(point); // debug
-        //console.log(point.getCoordinates());
     }
     return point;
 }
