@@ -173,6 +173,16 @@ function interactWithVectorSource(vectorSource, coordinate) {
         // do nothing
     } else {
         var geometry = feature.getGeometry();
+
+        // DEBUG
+        // what are the 4 elements in the coordinate array?
+        // would there be a possibility to add elements to this array to contain speed and heading???
+        var mlsCoordinates = geometry.getFirstCoordinate();
+        console.log(mlsCoordinates[2]); // seems to work
+        var geomLastCoordinate = geometry.getLastCoordinate();
+        console.log(geomLastCoordinate); // seems to work
+
+        //
         var closestPoint = geometry.getClosestPoint(coordinate);
         point = new ol.geom.Point(closestPoint);
     }
