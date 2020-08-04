@@ -165,7 +165,7 @@ function dragElement(elmnt) {
 }
 
 //// Map feature interaction
-function interactWithVectorSource(vectorSource, coordinate) {
+function interactWithVectorSource(map, vectorSource, coordinate) {
     // TODO : improve, do not use closest feature but use a finer research area
     var feature = vectorSource.getClosestFeatureToCoordinate(coordinate);
     var point = null;
@@ -178,13 +178,21 @@ function interactWithVectorSource(vectorSource, coordinate) {
         // what are the 4 elements in the coordinate array?
         // would there be a possibility to add elements to this array to contain speed and heading???
         var mlsCoordinates = geometry.getFirstCoordinate();
-        console.log(mlsCoordinates[2]); // seems to work
+        //console.log(mlsCoordinates[2]); // seems to work
         var geomLastCoordinate = geometry.getLastCoordinate();
-        console.log(geomLastCoordinate); // seems to work
+        //console.log(geomLastCoordinate); // seems to work
 
         //
         var closestPoint = geometry.getClosestPoint(coordinate);
-        point = new ol.geom.Point(closestPoint);
+
+        // do not return point if clicked to far away
+        var distance = Math.sqrt(Math.pow(closestPoint[0] - coordinate[0], 2) + Math.pow(closestPoint[1] - coordinate[1], 2));
+        var zoom = map.getView().getZoom();
+        var formula = 1000 / zoom; // TODO : improve the formula
+        console.log(formula);
+        if (distance < formula) {
+            point = new ol.geom.Point(closestPoint);
+        }
     }
     return point;
 }

@@ -343,7 +343,7 @@ function init() {
 
     map.on('click', function (evt) {
         var coordinate = map.getEventCoordinate(evt.originalEvent);
-        point = interactWithVectorSource(debugGPXSource, coordinate); // TODO : loop over all sources in workspace
+        point = interactWithVectorSource(map,debugGPXSource, coordinate); // TODO : loop over all sources in workspace
 
         // Force map update (otherwise it is updated on next loop() call)
         map.render();
