@@ -388,9 +388,10 @@ function loop() {
 
     // Log to route if active
     if (startPauseRouteRecordControl.activeBool && loggingValidity) {
-        // create feature point at user position
+        // setting previous position
         previousPosition = currentPosition;
 
+        // populating current position data
         currentPosition = getUserPosition();
         currentHeading = getUserHeading();
         currentSpeed = getUserSpeed();
