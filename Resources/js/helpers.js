@@ -182,7 +182,7 @@ function interactWithVectorSource(map, vectorSource, coordinate) {
         var geomLastCoordinate = geometry.getLastCoordinate();
         //console.log(geomLastCoordinate); // seems to work
 
-        //
+        // get closest point
         var closestPoint = geometry.getClosestPoint(coordinate);
 
         // do not return point if clicked to far away
