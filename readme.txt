@@ -21,9 +21,12 @@ and update displayed coordinates on mouse move
 [X] XX/XX/XXXX : implement route logging (+ route/features? listing form and GPX and/or GeoJSON export option)
 
 
+Accessing GPX trkpt data will be hard (impossible?) to manage via OL
+Try KML format (and other format managed by geotracker)
+
 1) Implement layer interaction (with one layer, loaded from GPX), interact with all possible data (speed and heading, etc)
 --> pour les formats GPX d'autres applications, juste récupérer les données sans chercher à savoir ce qu'elles représentent (et les afficher)
---> pour les formats issus de LeONAR, correctement les prendre en charge :)
+--> pour les formats issus de LeONAR, correctement les prendre en charge :) (use map.forEachFeatureAtPixel ?)
 https://stackoverflow.com/questions/8814218/openlayers-adding-unique-data-to-a-feature-and-referencing-it
 2) Implement multiple layers management (or other way to manage different tracks)
 3) Implement multiple layers interaction (interacting with only one at a time)
@@ -81,6 +84,7 @@ Controls to add: Quit application (especially when fullscreen), Lock on user hea
 
 ==== Versions ====
 Openlayers V6.4.3
+XmlToJson V1.3.2 https://github.com/SummersRemote/xmlToJSON
 
 ==== Resources ====
 https://commons.wikimedia.org/wiki/Farm-Fresh_web_icons

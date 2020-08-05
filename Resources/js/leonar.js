@@ -110,21 +110,26 @@ var routeLoggingVectorLayer = new ol.layer.Vector({
 });
 
 // DEBUG
-var myGpxFormat = new ol.format.GPX({
-    readExtensions: function (feature, extensionsNode) {
-        // TODO
-        //https://gis.stackexchange.com/questions/199610/openlayers-3-gpx-shape-issue
-        if (extensionsNode == null) {
-            return;
-        }
-        // TODO : fill in feature data?
-        console.log(extensionsNode);
-        return extensionsNode;
-    }
-});
+//var myGpxFormat = new ol.format.GPX({
+//    readExtensions: function (feature, extensionsNode) { // according to github discussion, will only retrieve trk extensions (not for each element)
+//        // TODO
+//        // https://gis.stackexchange.com/questions/199610/openlayers-3-gpx-shape-issue
+//        //if (extensionsNode == null) {
+//        //    return;
+//        //}
+//        // TODO : fill in feature data?
+//        // https://github.com/SummersRemote/xmlToJSON
+//        //var myoptions = {
+//        //    textKey: 'extensions'
+//        //};
+//        //var test = xmlToJSON.parseString(extensionsNode);
+//        //console.log(JSON.stringify(test)); // extensions are empty???
+//        return extensionsNode;
+//    }
+//});
 var debugGPXSource = new ol.source.Vector({
     url: 'local://D/source/repos/OLTesting/_tests/balade.gpx',
-    format: myGpxFormat,
+    format: new ol.format.GPX(), // myGpxFormat
 });
 var debugGPXLayer = new ol.layer.Vector({
     source: debugGPXSource,
