@@ -110,7 +110,7 @@ var routeLoggingVectorLayer = new ol.layer.Vector({
 });
 
 // DEBUG
-var gpxFormat = new ol.format.GPX({
+var myGpxFormat = new ol.format.GPX({
     readExtensions: function (feature, extensionsNode) {
         // TODO
         //https://gis.stackexchange.com/questions/199610/openlayers-3-gpx-shape-issue
@@ -124,7 +124,7 @@ var gpxFormat = new ol.format.GPX({
 });
 var debugGPXSource = new ol.source.Vector({
     url: 'local://D/source/repos/OLTesting/_tests/balade.gpx',
-    format: gpxFormat,
+    format: myGpxFormat,
 });
 var debugGPXLayer = new ol.layer.Vector({
     source: debugGPXSource,
@@ -198,7 +198,7 @@ function init() {
         minZoom: 2,
         center: initmapviewcenter,
         rotation: initmaprotation,
-        zoom: 10,
+        zoom: 14,
         multiWorld: true, // false
         // extent: mapViewExtent,
         constrainResolution: true,
@@ -400,9 +400,9 @@ function loop() {
 
         // storing data to be added to feature
         var featureData = {
-            'heading': currentHeading,
-            'speed': currentSpeed,
-            'elevation': currentElevation,
+            'cog': currentHeading,
+            'sog': currentSpeed,
+            'ele': currentElevation,
             'time': currentTimestamp
         };
 
@@ -417,8 +417,6 @@ function loop() {
                 ]),
                 data: featureData
             });
-            //https://stackoverflow.com/questions/8814218/openlayers-adding-unique-data-to-a-feature-and-referencing-it
-            console.log(featureData['speed']); // this seems to work but is this accessible later from feature?
             routeLoggingSource.addFeature(loggingNewFeature);
         }
     } else {

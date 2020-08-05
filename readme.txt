@@ -24,6 +24,7 @@ and update displayed coordinates on mouse move
 1) Implement layer interaction (with one layer, loaded from GPX), interact with all possible data (speed and heading, etc)
 --> pour les formats GPX d'autres applications, juste récupérer les données sans chercher à savoir ce qu'elles représentent (et les afficher)
 --> pour les formats issus de LeONAR, correctement les prendre en charge :)
+https://stackoverflow.com/questions/8814218/openlayers-adding-unique-data-to-a-feature-and-referencing-it
 2) Implement multiple layers management (or other way to manage different tracks)
 3) Implement multiple layers interaction (interacting with only one at a time)
 4) Implement layer creation from GPX file loading
