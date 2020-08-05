@@ -189,7 +189,7 @@ function interactWithVectorSource(map, vectorSource, coordinate) {
         var distance = Math.sqrt(Math.pow(closestPoint[0] - coordinate[0], 2) + Math.pow(closestPoint[1] - coordinate[1], 2));
         var zoom = map.getView().getZoom();
         var formula = 1000 / zoom; // TODO : improve the formula
-        console.log(formula);
+        //console.log(formula);
         if (distance < formula) {
             point = new ol.geom.Point(closestPoint);
         }

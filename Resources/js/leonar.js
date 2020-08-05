@@ -110,13 +110,21 @@ var routeLoggingVectorLayer = new ol.layer.Vector({
 });
 
 // DEBUG
+var gpxFormat = new ol.format.GPX({
+    readExtensions: function (feature, extensionsNode) {
+        // TODO
+        //https://gis.stackexchange.com/questions/199610/openlayers-3-gpx-shape-issue
+        if (extensionsNode == null) {
+            return;
+        }
+        // TODO : fill in feature data?
+        console.log(extensionsNode);
+        return extensionsNode;
+    }
+});
 var debugGPXSource = new ol.source.Vector({
     url: 'local://D/source/repos/OLTesting/_tests/balade.gpx',
-    format: new ol.format.GPX({
-        readExtensions: function (x) {
-            return x;
-        }
-    }), // working?
+    format: gpxFormat,
 });
 var debugGPXLayer = new ol.layer.Vector({
     source: debugGPXSource,
@@ -352,6 +360,8 @@ function init() {
 
 var previousPosition;
 var currentPosition;
+var currentHeading;
+var currentSpeed;
 
 // Loop function called from VB code
 function loop() {
@@ -380,10 +390,23 @@ function loop() {
     if (startPauseRouteRecordControl.activeBool && loggingValidity) {
         // create feature point at user position
         previousPosition = currentPosition;
-        currentPosition = getUserPosition();
 
-        // creating features
-        // TODO : multiline?
+        currentPosition = getUserPosition();
+        currentHeading = getUserHeading();
+        currentSpeed = getUserSpeed();
+        currentElevation = 0; // unused (could be)
+        currentTimestamp = 0; // todo
+
+        // storing data to be added to feature
+        var featureData = {
+            'heading': currentHeading,
+            'speed': currentSpeed,
+            'elevation': currentElevation,
+            'time': currentTimestamp
+        };
+
+        // creating feature
+        // TODO : multilinestring?
         if (previousPosition != undefined && currentPosition != undefined) {
             loggingNewFeature = new ol.Feature({
                 name: 'loggedRoute',
@@ -391,7 +414,10 @@ function loop() {
                     ol.proj.fromLonLat([previousPosition._longitude, previousPosition._latitude]),
                     ol.proj.fromLonLat([currentPosition._longitude, currentPosition._latitude])
                 ]),
+                data: featureData
             });
+            //https://stackoverflow.com/questions/8814218/openlayers-adding-unique-data-to-a-feature-and-referencing-it
+            console.log(featureData['speed']); // this seems to work but is this accessible later from feature?
             routeLoggingSource.addFeature(loggingNewFeature);
         }
     } else {
