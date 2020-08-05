@@ -102,6 +102,7 @@ var routeStyles = {
     })
 };
 var routeLoggingSource = new ol.source.Vector();
+var routeLoggingMLS = null;
 var routeLoggingVectorLayer = new ol.layer.Vector({
     source: routeLoggingSource,
     style: function (feature) {
@@ -411,9 +412,19 @@ function loop() {
             'time': currentTimestamp
         };
 
-        // creating feature
-        // TODO : multilinestring?
+        // creating features
+        // DEBUG : multilinestring (not working)
         if (previousPosition != undefined && currentPosition != undefined) {
+            //if (routeLoggingMLS === null) { // not working
+            //    routeLoggingMLS = new ol.Feature({
+            //        name: 'LoggedRoute',
+            //        geometry: new ol.geom.MultiLineString(
+            //            ol.proj.fromLonLat([currentPosition._longitude, currentPosition._latitude]) // explore getLayout option to store additional elevation etc.
+            //        ),
+            //    });
+            //    routeLoggingSource.addFeature(routeLoggingMLS);
+            //}
+
             loggingNewFeature = new ol.Feature({
                 name: 'loggedRoute',
                 geometry: new ol.geom.LineString([
@@ -423,6 +434,7 @@ function loop() {
                 data: featureData
             });
             routeLoggingSource.addFeature(loggingNewFeature);
+            //routeLoggingMLS.appendLineString(loggingNewFeature);
         }
     } else {
         // reset previous position and current position

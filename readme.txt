@@ -24,7 +24,7 @@ and update displayed coordinates on mouse move
 Accessing GPX trkpt data will be hard (impossible?) to manage via OL
 Try KML format (and other format managed by geotracker)
 
-1) Implement layer interaction (with one layer, loaded from GPX), interact with all possible data (speed and heading, etc)
+1) Implement layer interaction (with one layer, loaded from KML or ???), interact with all possible data (speed and heading, etc)
 --> pour les formats GPX d'autres applications, juste récupérer les données sans chercher à savoir ce qu'elles représentent (et les afficher)
 --> pour les formats issus de LeONAR, correctement les prendre en charge :) (use map.forEachFeatureAtPixel ?)
 https://stackoverflow.com/questions/8814218/openlayers-adding-unique-data-to-a-feature-and-referencing-it
