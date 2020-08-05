@@ -415,18 +415,21 @@ function loop() {
         // creating features
         // DEBUG : multilinestring (not working)
         if (previousPosition != undefined && currentPosition != undefined) {
-            // TODO: routeLoggingMLS should directly be the multilinestring
             // PROBLEM : how to manage data in the multilinestring case?
-            //if (routeLoggingMLS === null) { // not working
-            //    routeLoggingMLS = new ol.Feature({
-            //        name: 'LoggedRoute',
-            //        geometry: new ol.geom.MultiLineString([
-            //            ol.proj.fromLonLat([currentPosition._longitude, currentPosition._latitude]) // explore getLayout option to store additional elevation etc.
-            //        ]),
-            //    });
-            //    routeLoggingSource.addFeature(routeLoggingMLS);
-            //}
+            if (routeLoggingMLS === null) {
+                routeLoggingMLS = new ol.geom.MultiLineString([
+                    ol.proj.fromLonLat([currentPosition._longitude, currentPosition._latitude]) // explore getLayout option to store additional elevation etc.
+                ]);
+                routeLoggingSource.addFeature(new ol.Feature({
+                    name: 'LoggedRoute',
+                    geometry: routeLoggingMLS
+                }));
+            }
 
+            var test = new ol.geom.LineString([
+                ol.proj.fromLonLat([previousPosition._longitude, previousPosition._latitude]),
+                ol.proj.fromLonLat([currentPosition._longitude, currentPosition._latitude])
+            ]);
             loggingNewFeature = new ol.Feature({
                 name: 'LoggedMotion',
                 geometry: new ol.geom.LineString([
@@ -436,7 +439,7 @@ function loop() {
                 data: featureData
             });
             routeLoggingSource.addFeature(loggingNewFeature);
-            //routeLoggingMLS.getGeometry().appendLineString();
+            //routeLoggingMLS.appendLineString(test); // sending invalid array length error???
         }
     } else {
         // reset previous position and current position
