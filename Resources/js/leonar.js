@@ -408,25 +408,27 @@ function loop() {
         var featureData = {
             'cog': currentHeading,
             'sog': currentSpeed,
-            'ele': currentElevation,
-            'time': currentTimestamp
+            'ele': currentElevation, // store in Z?
+            'time': currentTimestamp // store in M?
         };
 
         // creating features
         // DEBUG : multilinestring (not working)
         if (previousPosition != undefined && currentPosition != undefined) {
+            // TODO: routeLoggingMLS should directly be the multilinestring
+            // PROBLEM : how to manage data in the multilinestring case?
             //if (routeLoggingMLS === null) { // not working
             //    routeLoggingMLS = new ol.Feature({
             //        name: 'LoggedRoute',
-            //        geometry: new ol.geom.MultiLineString(
+            //        geometry: new ol.geom.MultiLineString([
             //            ol.proj.fromLonLat([currentPosition._longitude, currentPosition._latitude]) // explore getLayout option to store additional elevation etc.
-            //        ),
+            //        ]),
             //    });
             //    routeLoggingSource.addFeature(routeLoggingMLS);
             //}
 
             loggingNewFeature = new ol.Feature({
-                name: 'loggedRoute',
+                name: 'LoggedMotion',
                 geometry: new ol.geom.LineString([
                     ol.proj.fromLonLat([previousPosition._longitude, previousPosition._latitude]),
                     ol.proj.fromLonLat([currentPosition._longitude, currentPosition._latitude])
@@ -434,7 +436,7 @@ function loop() {
                 data: featureData
             });
             routeLoggingSource.addFeature(loggingNewFeature);
-            //routeLoggingMLS.appendLineString(loggingNewFeature);
+            //routeLoggingMLS.getGeometry().appendLineString();
         }
     } else {
         // reset previous position and current position
