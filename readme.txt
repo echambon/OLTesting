@@ -84,7 +84,7 @@ Controls to add: Quit application (especially when fullscreen), Lock on user hea
 
 ==== Versions ====
 Openlayers V6.4.3
-XmlToJson V1.3.2 https://github.com/SummersRemote/xmlToJSON
+xml2json : https://goessner.net/download/prj/jsonxml/
 
 ==== Resources ====
 https://commons.wikimedia.org/wiki/Farm-Fresh_web_icons

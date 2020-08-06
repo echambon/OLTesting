@@ -136,15 +136,25 @@ var debugGPXSource = new ol.source.Vector({
 });
 // TODO : open xml file to xml DOM node and provide to xml2json
 // https://www.w3schools.com/xml/dom_intro.asp
-// var debugGPXjson = xml2json(xmlDOMnode, '');
+// TODO : put in a dedicated function when working
+var xhttp = new XMLHttpRequest();
+xhttp.open("GET", "local://D/source/repos/OLTesting/_tests/balade.gpx", false);
+xhttp.send(null);
+var xmlDoc = xhttp.responseXML;
+var rootNode = xmlDoc.childNodes[0];
+//console.log(xmlDoc);
+//console.log(rootNode);
+var debugGPXjson = xml2json(rootNode, ''); // working, TODO: find how to interact with subnodes
+//console.log(debugGPXjson);
+
 var debugGPXLayer = new ol.layer.Vector({
     source: debugGPXSource,
     style: function (feature) {
         return routeStyles[feature.getGeometry().getType()];
     },
 });
-var lobjectTest1 = new LObject("test1", routeLoggingVectorLayer);
-var lobjectTest2 = new LObject("test2", debugGPXLayer);
+var lobjectTest1 = new LObject("test1", null, routeLoggingVectorLayer);
+var lobjectTest2 = new LObject("test2", null, debugGPXLayer);
 var leonarWorkspace = [
     lobjectTest1,
     lobjectTest2
@@ -411,6 +421,8 @@ function loop() {
 
         // storing data to be added to feature
         // TODO : store in an array attached to LObject so it is accessible later
+        // TODO : build a json object which can be exported easily to XML file to store data
+        // TODO : store in LObject data field
         var featureData = {
             'cog': currentHeading,
             'sog': currentSpeed,
@@ -422,20 +434,20 @@ function loop() {
         // DEBUG : multilinestring (not working)
         if (previousPosition != undefined && currentPosition != undefined) {
             // PROBLEM : how to manage data in the multilinestring case?
-            if (routeLoggingMLS === null) {
-                routeLoggingMLS = new ol.geom.MultiLineString([
-                    ol.proj.fromLonLat([currentPosition._longitude, currentPosition._latitude]) // explore getLayout option to store additional elevation etc.
-                ]);
-                routeLoggingSource.addFeature(new ol.Feature({
-                    name: 'LoggedRoute',
-                    geometry: routeLoggingMLS
-                }));
-            }
+            //if (routeLoggingMLS === null) {
+            //    routeLoggingMLS = new ol.geom.MultiLineString([
+            //        ol.proj.fromLonLat([currentPosition._longitude, currentPosition._latitude]) // explore getLayout option to store additional elevation etc.
+            //    ]);
+            //    routeLoggingSource.addFeature(new ol.Feature({
+            //        name: 'LoggedRoute',
+            //        geometry: routeLoggingMLS
+            //    }));
+            //}
 
-            var test = new ol.geom.LineString([
-                ol.proj.fromLonLat([previousPosition._longitude, previousPosition._latitude]),
-                ol.proj.fromLonLat([currentPosition._longitude, currentPosition._latitude])
-            ]);
+            //var test = new ol.geom.LineString([
+            //    ol.proj.fromLonLat([previousPosition._longitude, previousPosition._latitude]),
+            //    ol.proj.fromLonLat([currentPosition._longitude, currentPosition._latitude])
+            //]);
             loggingNewFeature = new ol.Feature({
                 name: 'LoggedMotion',
                 geometry: new ol.geom.LineString([
