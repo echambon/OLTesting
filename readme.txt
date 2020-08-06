@@ -85,7 +85,6 @@ Controls to add: Quit application (especially when fullscreen), Lock on user hea
 ==== Versions ====
 Openlayers V6.4.3
 jQuery V3.5.1
-xml2json : https://goessner.net/download/prj/jsonxml/
 
 ==== Resources ====
 https://commons.wikimedia.org/wiki/Farm-Fresh_web_icons
