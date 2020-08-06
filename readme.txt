@@ -21,12 +21,8 @@ and update displayed coordinates on mouse move
 [X] XX/XX/XXXX : implement route logging (+ route/features? listing form and GPX and/or GeoJSON export option)
 
 
-Accessing GPX trkpt data will be hard (impossible?) to manage via OL
-Try KML format (and other format managed by geotracker)
-
-1) Implement layer interaction (with one layer, loaded from KML or ???), interact with all possible data (speed and heading, etc)
---> pour les formats GPX d'autres applications, juste récupérer les données sans chercher à savoir ce qu'elles représentent (et les afficher)
---> pour les formats issus de LeONAR, correctement les prendre en charge :) (use map.forEachFeatureAtPixel ?)
+1) Implement layer interaction (with one layer), interact with all possible data extracted from the GPX/KML/KMZ file (speed and heading, etc)
+--> check that it is possible to get point index to also retrieve data from GPX file (use map.forEachFeatureAtPixel ?)
 https://stackoverflow.com/questions/8814218/openlayers-adding-unique-data-to-a-feature-and-referencing-it
 2) Implement multiple layers management (or other way to manage different tracks)
 3) Implement multiple layers interaction (interacting with only one at a time)
