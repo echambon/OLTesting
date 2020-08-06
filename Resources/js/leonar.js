@@ -128,18 +128,23 @@ var routeLoggingVectorLayer = new ol.layer.Vector({
 //        return extensionsNode;
 //    }
 //});
+// TODO : also store GPX file to a local array or JSON object so that it can be accessed later (to display information in popup)
+// TODO : store this data in associated LObject
 var debugGPXSource = new ol.source.Vector({
     url: 'local://D/source/repos/OLTesting/_tests/balade.gpx',
     format: new ol.format.GPX(), // myGpxFormat
 });
+// TODO : open xml file to xml DOM node and provide to xml2json
+// https://www.w3schools.com/xml/dom_intro.asp
+// var debugGPXjson = xml2json(xmlDOMnode, '');
 var debugGPXLayer = new ol.layer.Vector({
     source: debugGPXSource,
     style: function (feature) {
         return routeStyles[feature.getGeometry().getType()];
     },
 });
-var lobjectTest1 = new LObject("test1", true, routeLoggingVectorLayer);
-var lobjectTest2 = new LObject("test2", false, debugGPXLayer);
+var lobjectTest1 = new LObject("test1", routeLoggingVectorLayer);
+var lobjectTest2 = new LObject("test2", debugGPXLayer);
 var leonarWorkspace = [
     lobjectTest1,
     lobjectTest2
@@ -405,11 +410,12 @@ function loop() {
         currentTimestamp = 0; // todo
 
         // storing data to be added to feature
+        // TODO : store in an array attached to LObject so it is accessible later
         var featureData = {
             'cog': currentHeading,
             'sog': currentSpeed,
-            'ele': currentElevation, // store in Z?
-            'time': currentTimestamp // store in M?
+            'ele': currentElevation,
+            'time': currentTimestamp
         };
 
         // creating features

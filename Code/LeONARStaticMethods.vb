@@ -12,6 +12,7 @@ Public Class LeONARStaticMethods
         result.RegisterResourceHandler("http://rendering/css/popup.css", GetStreamResource("OLTesting.popup.css"), "text/css")
         result.RegisterResourceHandler("http://rendering/css/ol.css", GetStreamResource("OLTesting.ol.css"), "text/css")
         result.RegisterResourceHandler("http://rendering/js/ol.js", GetStreamResource("OLTesting.ol.js"), "text/javascript")
+        result.RegisterResourceHandler("http://rendering/js/xml2json.js", GetStreamResource("OLTesting.xml2json.js"), "text/javascript")
         result.RegisterResourceHandler("http://rendering/css/mapstyle.css", GetStreamResource("OLTesting.mapstyle.css"), "text/css")
         result.RegisterResourceHandler("http://rendering/js/helpers.js", GetStreamResource("OLTesting.helpers.js"), "text/javascript")
         result.RegisterResourceHandler("http://rendering/js/events.js", GetStreamResource("OLTesting.events.js"), "text/javascript")

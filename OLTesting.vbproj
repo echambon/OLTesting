@@ -183,6 +183,7 @@
   <ItemGroup>
     <Content Include="LeONAR_icon.ico" />
     <Content Include="readme.txt" />
+    <EmbeddedResource Include="Resources\includes\xml2json.js" />
     <EmbeddedResource Include="Resources\img\iconPause.png" />
     <EmbeddedResource Include="Resources\img\iconStart.png" />
     <EmbeddedResource Include="Resources\img\iconUserPosition.png" />
