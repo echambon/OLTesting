@@ -87,4 +87,5 @@ Openlayers V6.4.3
 jQuery V3.5.1
 
 ==== Resources ====
+Very nice page explaining asynchronous behaviour in JS: https://stackoverflow.com/questions/14220321/how-do-i-return-the-response-from-an-asynchronous-call
 https://commons.wikimedia.org/wiki/Farm-Fresh_web_icons

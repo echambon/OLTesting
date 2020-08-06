@@ -118,7 +118,15 @@ var debugGPXSource = new ol.source.Vector({
     url: debugGPXfilepath,
     format: new ol.format.GPX(), // myGpxFormat
 });
-var debugGPXjson = loadXMLtoJSON(debugGPXfilepath);
+
+var lobjectTest2 = new LObject("test2", null, debugGPXLayer);
+var debugGPXjson;
+loadXMLtoJSON(debugGPXfilepath, function (result) { // Asynchronous management
+    debugGPXjson = result;
+    lobjectTest2.data = result;
+    console.log(result);
+});
+
 var debugGPXLayer = new ol.layer.Vector({
     source: debugGPXSource,
     style: function (feature) {
@@ -126,7 +134,6 @@ var debugGPXLayer = new ol.layer.Vector({
     },
 });
 var lobjectTest1 = new LObject("test1", null, routeLoggingVectorLayer);
-var lobjectTest2 = new LObject("test2", debugGPXjson, debugGPXLayer);
 var leonarWorkspace = [
     lobjectTest1,
     lobjectTest2
@@ -359,8 +366,7 @@ var currentSpeed;
 // Loop function called from VB code
 function loop() {
     // DEBUG
-    //JSON.stringify(lobjectTest2.data, null, 2);
-    console.log(lobjectTest2.data); // null if not synchronous but use a callback?
+    //console.log(lobjectTest2.data); // working
 
     // update validity
     loggingValidity = getValidity();
