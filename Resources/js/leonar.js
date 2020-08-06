@@ -110,43 +110,15 @@ var routeLoggingVectorLayer = new ol.layer.Vector({
     },
 });
 
-// DEBUG
-//var myGpxFormat = new ol.format.GPX({
-//    readExtensions: function (feature, extensionsNode) { // according to github discussion, will only retrieve trk extensions (not for each element)
-//        // TODO
-//        // https://gis.stackexchange.com/questions/199610/openlayers-3-gpx-shape-issue
-//        //if (extensionsNode == null) {
-//        //    return;
-//        //}
-//        // TODO : fill in feature data?
-//        // https://github.com/SummersRemote/xmlToJSON
-//        //var myoptions = {
-//        //    textKey: 'extensions'
-//        //};
-//        //var test = xmlToJSON.parseString(extensionsNode);
-//        //console.log(JSON.stringify(test)); // extensions are empty???
-//        return extensionsNode;
-//    }
-//});
+//// DEBUG
 // TODO : also store GPX file to a local array or JSON object so that it can be accessed later (to display information in popup)
 // TODO : store this data in associated LObject
+var debugGPXfilepath = 'local://D/source/repos/OLTesting/_tests/balade.gpx';
 var debugGPXSource = new ol.source.Vector({
-    url: 'local://D/source/repos/OLTesting/_tests/balade.gpx',
+    url: debugGPXfilepath,
     format: new ol.format.GPX(), // myGpxFormat
 });
-// TODO : open xml file to xml DOM node and provide to xml2json
-// https://www.w3schools.com/xml/dom_intro.asp
-// TODO : put in a dedicated function when working
-var xhttp = new XMLHttpRequest();
-xhttp.open("GET", "local://D/source/repos/OLTesting/_tests/balade.gpx", false);
-xhttp.send(null);
-var xmlDoc = xhttp.responseXML;
-var rootNode = xmlDoc.childNodes[0];
-//console.log(xmlDoc);
-//console.log(rootNode);
-var debugGPXjson = xml2json(rootNode, ''); // working, TODO: find how to interact with subnodes
-//console.log(debugGPXjson);
-
+var debugGPXjson = loadXMLtoJSON(debugGPXfilepath);
 var debugGPXLayer = new ol.layer.Vector({
     source: debugGPXSource,
     style: function (feature) {
@@ -154,7 +126,7 @@ var debugGPXLayer = new ol.layer.Vector({
     },
 });
 var lobjectTest1 = new LObject("test1", null, routeLoggingVectorLayer);
-var lobjectTest2 = new LObject("test2", null, debugGPXLayer);
+var lobjectTest2 = new LObject("test2", debugGPXjson, debugGPXLayer);
 var leonarWorkspace = [
     lobjectTest1,
     lobjectTest2
@@ -386,6 +358,10 @@ var currentSpeed;
 
 // Loop function called from VB code
 function loop() {
+    // DEBUG
+    //JSON.stringify(lobjectTest2.data, null, 2);
+    console.log(lobjectTest2.data); // null if not synchronous but use a callback?
+
     // update validity
     loggingValidity = getValidity();
 

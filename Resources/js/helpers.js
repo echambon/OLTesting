@@ -196,3 +196,26 @@ function interactWithVectorSource(map, vectorSource, coordinate) {
     }
     return point;
 }
+
+//// XML file to JSON loading
+function loadXMLtoJSON(filepath) {
+    var json = null;
+    $.ajax({
+        type: 'GET',
+        url: filepath,
+        dataType: 'xml',
+
+        error: function (e) {
+            console.log("XML reading Failed: ", e);
+        },
+
+        success: function (xml) {
+            json = $.xml2json(xml);
+            //console.log(JSON.stringify(json));
+        },
+
+        async: false // This works but use a callback to store data in LObject???
+        // https://stackoverflow.com/questions/3222347/javascript-global-variables-after-ajax-requests
+    });
+    return json;
+}
