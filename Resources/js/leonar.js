@@ -113,7 +113,8 @@ var routeLoggingVectorLayer = new ol.layer.Vector({
 //// DEBUG
 // TODO : also store GPX file to a local array or JSON object so that it can be accessed later (to display information in popup)
 // TODO : store this data in associated LObject
-var debugGPXfilepath = 'local://D/source/repos/OLTesting/_tests/balade.gpx';
+//var debugGPXfilepath = 'local://D/source/repos/OLTesting/_tests/balade.gpx';
+var debugGPXfilepath = 'local://D/source/repos/OLTesting/_tests/trajet_retour.gpx';
 var debugGPXSource = new ol.source.Vector({
     url: debugGPXfilepath,
     format: new ol.format.GPX(), // myGpxFormat
