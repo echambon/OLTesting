@@ -1,3 +1,13 @@
 
 bin/
 obj/
+Manual/manual.toc
+Manual/manual.pdf
+Manual/manual.out
+Manual/manual.log
+Manual/manual.ind
+Manual/manual.ilg
+Manual/manual.idx
+Manual/manual.blg
+Manual/manual.bbl
+Manual/manual.aux
